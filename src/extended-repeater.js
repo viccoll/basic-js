@@ -1,45 +1,30 @@
 const CustomError = require("../extensions/custom-error");
 
 module.exports = function repeater( str, options) {
+  let result = '';
+  if(options.repeatTimes === undefined) options.repeatTimes = 1;
+  
+  for(let i = 0; i < options.repeatTimes; i++){
+    result += str;
+    if (options.additionRepeatTimes === undefined && typeof(options.addition) === 'string'){
+      options.additionRepeatTimes = 1;
+    }
+    for (let i = 0; i < options.additionRepeatTimes; i++){
+      result += options.addition;
+      if(i !== options.additionRepeatTimes -1){
+        result += options.additionSeparator;
+      }
+    }
+    if(i !== options.repeatTimes - 1){
+      if (options.separator){
+        result += options.separator;
+      } else {
+        result += '+';
+      }
+    }
+  }
+  return(result);
   throw new CustomError('Not implemented');
-   var repeat = options.repeatTimes
-   if (options.separator) {
-     var sep = options.separator
-   } else {
-     var sep = '+'
-   }
-   if (options.addition!==undefined) {
-     var add = String(options.addition)
-   } else {
-     var add = ''
-   }
-   if (options.additionRepeatTimes) {
-     var repeatAdd = options.additionRepeatTimes
-   } else {
-     var repeatAdd = 0
-   }
-   if (options.additionSeparator) {
-     var addSep = options.additionSeparator
-   } else {
-     var addSep = '|'
-   }
- 
-   var res = ''
-   for (i = 1; i < repeat; i++) {
-     res += str
-     // console.log(res)
-     for (j = 1; j < repeatAdd; j++) {
-       res += add + addSep
-     }
-     res += add + sep
-   }
-   res += str
-   for (j = 1; j < repeatAdd; j++) {
-     res += add + addSep
-   }
-   res += add
-   // console.log(res)
-   return res
  
   
 };

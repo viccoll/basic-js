@@ -2,7 +2,6 @@ const CustomError = require("../extensions/custom-error");
 
 module.exports = function transform(arr) 
 {
-  throw new CustomError('Not implemented');
   if (Object.prototype.toString.call(arr) !== '[object Array]') 
   {
     throw new Error('Error');
@@ -24,4 +23,6 @@ module.exports = function transform(arr)
     i++;
   };
    return result.filter(word => word !== 'del');
+  throw new CustomError('Not implemented');
+  
 };
