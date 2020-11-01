@@ -41,6 +41,7 @@ The approximate age of the sample is calculated by measuring the **ratio** of th
 
 </details>
 
+
 ---
 
 Your task is to implement the function `dateSample(sampleActivity)` that calculates sample approximate age (in years). Please use given `MODERN_ACTIVITY` and `HALF_LIFE_PERIOD`.
